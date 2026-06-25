@@ -42,7 +42,23 @@ const frases = {
         "TU MENTE ES TU HERRAMIENTA MÁS VALIOSA, DALE LA CALMA QUE NECESITA PARA BRILLAR.",
         "HOY EL MEJOR LIBRO QUE PUEDES LEER ES AQUEL QUE TE BRINDA PAZ Y RELAJACIÓN.",
         "MAESTRA, TU DESCANSO ES EL EJEMPLO MÁS GRANDE QUE PUEDES DAR SOBRE EL AUTOCUIDADO."
+    ],
+    motivacion: [
+        "TU DEDICACIÓN ES EL MOTOR QUE MUEVE EL MUNDO, MAESTRA.",
+        "NO TE RINDAS, CADA PASO TUYO ES UN TRIUNFO PARA TUS ALUMNOS.",
+        "TU LUZ ES NECESARIA, ¡SIGUE BRILLANDO!"
     ]
+};
+function obtenerSaludo() {
+    const hora = new Date().getHours();
+    if (hora < 12) return "¡Buenos días, Maestra!";
+    if (hora < 18) return "¡Feliz tarde, Maestra!";
+    return "¡Descansa, Maestra!";
+}
+
+// Actualizar el saludo al cargar
+window.onload = () => {
+    document.querySelector('h1').textContent = obtenerSaludo();
 };
 // Función para vibración táctil
 function vibrar() {
