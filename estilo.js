@@ -45,8 +45,9 @@ const frases = {
     ]
 };
 function mostrarFrase(tipo) {
-    confetti({ particleCount: 300, spread: 150, origin: { y: 0.6 } });
-
+    // Confeti más festivo
+    confetti({ particleCount: 200, spread: 100, origin: { y: 0.7 }, colors: ['#6a1b9a', '#0288d1', '#c6ff00'] });
+    
     const cajaFrases = document.getElementById('frase');
     const lista = frases[tipo];
     const aleatoria = lista[Math.floor(Math.random() * lista.length)];
@@ -67,6 +68,21 @@ function reiniciarMensaje() {
     }, 300);
 }
 
+// Lluvia de útiles mejorada
+function crearLluvia() {
+    const contenedor = document.getElementById('lluvia');
+    const utiles = ['✏️', '📏', '📐', '✂️', '🖍️', '📖', '📝'];
+    setInterval(() => {
+        const util = document.createElement('div');
+        util.classList.add('util');
+        util.textContent = utiles[Math.floor(Math.random() * utiles.length)];
+        util.style.left = Math.random() * 100 + 'vw';
+        util.style.animationDuration = '5s';
+        contenedor.appendChild(util);
+        setTimeout(() => util.remove(), 5000);
+    }, 1000);
+}
+
 // Lluvia de útiles
 function crearLluvia() {
     const contenedor = document.getElementById('lluvia');
@@ -85,3 +101,7 @@ function crearLluvia() {
 }
 
 crearLluvia();
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
