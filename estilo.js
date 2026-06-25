@@ -104,7 +104,7 @@ function reiniciarMensaje() {
     const cajaFrases = document.getElementById('frase');
     cajaFrases.style.opacity = 0;
     setTimeout(() => {
-        cajaFrases.textContent = "¿CÓMO TE SIENTES HOY MISS?";
+        cajaFrases.textContent = "¿CÓMO TE SIENTES HOY MISS YEIMY?";
         cajaFrases.style.opacity = 1;
     }, 300);
 }
