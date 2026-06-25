@@ -103,3 +103,23 @@ crearLluvia();
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }
+
+
+// Añadir vibración si el navegador lo permite
+function vibrar() {
+    if ("vibrate" in navigator) {
+        navigator.vibrate(50); // Vibración corta al tocar
+    }
+}
+
+// Modificar mostrarFrase para incluir la vibración
+function mostrarFrase(tipo) {
+    vibrar(); // Feedback táctil
+    confetti({ 
+        particleCount: 100, 
+        spread: 70, 
+        origin: { y: 0.6 },
+        colors: ['#FF69B4', '#FFD700', '#87CEEB'] // Colores más suaves
+    });
+    // ... resto de tu código existente ...
+}
