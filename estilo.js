@@ -136,7 +136,7 @@ function crearLluvia() {
         const util = document.createElement('div');
         util.classList.add('util');
         util.textContent = utiles[Math.floor(Math.random() * utiles.length)];
-        util.style.fontSize = (Math.random() * 130 + 90) + 'px';
+        util.style.fontSize = (Math.random() * 90 + 40) + 'px';
         util.style.left = Math.random() * 100 + 'vw';
         util.style.animationDuration = (Math.random() * 5 + 3) + 's';
         contenedor.appendChild(util);
