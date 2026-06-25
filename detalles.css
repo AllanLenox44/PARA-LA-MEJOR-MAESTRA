@@ -1,0 +1,97 @@
+body {
+    background-color: #fce4ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Tiems New Roman', sans-serif;
+    overflow: hidden;
+}
+
+.paisaje-fondo {
+    position: fixed; bottom: 0; width: 100%; height: 120px;
+    background: linear-gradient(to top, #1b891e, transparent);
+    z-index: 0;
+}
+
+.tarjeta {
+    background: rgb(245, 244, 244); padding: 40px; border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center; max-width:450px; z-index: 1; position: relative;
+}
+
+h1 { color: #d81b60; margin: 10px 0; }
+.nombre { color: #880e4f; font-size: 5rem; font-weight: bold; margin-bottom: 10px; }
+
+#caja-frases {
+    min-height: 80px; margin: 20px 0; padding: 15px;
+    border: 2px dashed #f8bbd0; border-radius: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.3s;
+}
+
+.selector-animo { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
+
+button {
+    background: linear-gradient(45deg, #d81b60, #f06292);
+    color: white; border: none; padding: 22px 40px;
+    border-radius: 50px; cursor: pointer; font-weight: bold;
+    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
+    transition: transform 0.2s;
+}
+
+button:hover { transform: scale(1.05); }
+
+/* Lluvia de útiles */
+.lluvia-utiles {
+    position: fixed;
+    top: -50px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.util {
+    position: absolute;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    to { transform: translateY(100vh) rotate(360deg); }
+}
+.decoracion-flores {
+    font-size: 6rem; /* CambiaR este valor para que las flores sean más grandes */
+    margin-bottom: 80px;
+}
+
+/* --- DISEÑO RESPONSIVO AUTOMÁTICO --- */
+
+/* 1. Para móviles pequeños y tablets */
+@media (max-width: 600px) {
+    .tarjeta {
+        width: 90%;          /* Ocupa casi todo el ancho */
+        padding: 20px;       /* Menos espacio interno para aprovechar la pantalla */
+        border-radius: 15px;
+    }
+
+    h1 { font-size: 1.5rem; } /* Título más pequeño en móviles */
+
+    .selector-animo {
+        flex-direction: column; /* Botones uno debajo de otro */
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;         /* Botones ocupan todo el ancho */
+        padding: 15px;       /* Botones más altos para tocarlos fácil con el dedo */
+    }
+}
+
+/* 2. Para pantallas muy grandes (PC) */
+@media (min-width: 1200px) {
+    .tarjeta {
+        max-width: 600px;    /* Un poco más de espacio en monitores grandes */
+    }
+}
