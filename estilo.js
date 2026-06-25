@@ -68,22 +68,6 @@ function reiniciarMensaje() {
     }, 300);
 }
 
-// Lluvia de útiles mejorada
-function crearLluvia() {
-    const contenedor = document.getElementById('lluvia');
-    const utiles = ['✏️', '📏', '📐', '✂️', '🖍️', '📖', '📝'];
-    setInterval(() => {
-        const util = document.createElement('div');
-        util.classList.add('util');
-        util.textContent = utiles[Math.floor(Math.random() * utiles.length)];
-        util.style.left = Math.random() * 100 + 'vw';
-        util.style.animationDuration = '5s';
-        contenedor.appendChild(util);
-        setTimeout(() => util.remove(), 5000);
-    }, 1000);
-}
-
-// Lluvia de útiles
 function crearLluvia() {
     const contenedor = document.getElementById('lluvia');
     const utiles = ['✏️', '📏', '📐', '✂️', '🖍️', '📖', '📝'];
@@ -92,13 +76,27 @@ function crearLluvia() {
         const util = document.createElement('div');
         util.classList.add('util');
         util.textContent = utiles[Math.floor(Math.random() * utiles.length)];
-        util.style.fontSize = (Math.random() * 160 + 110) + 'px';
+        
+        // Ajuste de tamaño para que se vean bien en móvil
+        util.style.fontSize = (Math.random() * 30 + 20) + 'px';
+        util.style.position = 'absolute';
+        util.style.top = '-50px';
         util.style.left = Math.random() * 100 + 'vw';
-        util.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        util.style.animation = `caer ${Math.random() * 3 + 4}s linear`;
+        
         contenedor.appendChild(util);
-        setTimeout(() => util.remove(), 5000);
-    }, 300);
+        
+        // Eliminar después de que termine la animación
+        setTimeout(() => util.remove(), 7000);
+    }, 800);
 }
+
+// Añadimos el keyframe dinámicamente si no está en el CSS
+const style = document.createElement('style');
+style.innerHTML = `@keyframes caer { to { transform: translateY(100vh) rotate(360deg); } }`;
+document.head.appendChild(style);
+
+crearLluvia();
 
 crearLluvia();
 

@@ -1,54 +1,64 @@
+/* Asegura que el cuerpo ocupe toda la pantalla y no se corte */
 body {
-    /* Fondo vibrante combinando tus colores */
     background: linear-gradient(135deg, #6a1b9a, #0288d1, #c6ff00);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    overflow: hidden; /* Evita barras de desplazamiento innecesarias */
+    font-family: 'Arial', sans-serif;
 }
 
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* Lluvia de útiles - Ahora siempre visible */
+.lluvia-utiles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0; /* Detrás de la tarjeta */
 }
 
 .tarjeta {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 40px;
-    border-radius: 40px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     text-align: center;
-    max-width: 450px;
+    width: 90%;
+    max-width: 400px;
+    z-index: 1; /* Por encima de la lluvia */
 }
 
-h1 { color: #ffffff; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
-.nombre { color: #c6ff00; font-size: 3rem; font-weight: bold; }
+.decoracion-flores { font-size: 3rem; margin-bottom: 10px; }
+h1 { color: #4a148c; font-size: 1.5rem; margin: 0; }
+.nombre { color: #8bc34a; font-size: 2.5rem; font-weight: bold; margin: 10px 0; }
 
 #caja-frases {
-    background: rgba(255, 255, 255, 0.8);
-    color: #6a1b9a;
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px;
     border-radius: 20px;
     margin: 20px 0;
-    min-height: 80px;
+    min-height: 60px;
+    border: 2px solid #0288d1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.selector-animo { display: flex; flex-direction: column; gap: 12px; }
+.selector-animo { display: flex; flex-direction: column; gap: 10px; }
 
 button {
-    padding: 15px; border-radius: 50px; border: none;
-    font-weight: bold; cursor: pointer; transition: 0.3s;
+    padding: 14px; border-radius: 50px; border: none;
+    font-weight: bold; cursor: pointer; color: white;
+    font-size: 1rem;
 }
 
-.btn-insp { background: #6a1b9a; color: white; }
-.btn-desc { background: #0288d1; color: white; }
+.btn-insp { background: #6a1b9a; }
+.btn-desc { background: #0288d1; }
 .btn-reset { background: #c6ff00; color: #333; }
 
 button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
