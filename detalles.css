@@ -1,4 +1,4 @@
-/* Asegura que el fondo sea fijo y siempre visible */
+/* --- BASE Y FONDO --- */
 body {
     background: linear-gradient(135deg, #6a1b9a, #0288d1, #c6ff00);
     min-height: 100vh;
@@ -10,74 +10,100 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-/* Lluvia de útiles - Ahora ocupa toda la capa de fondo */
-.lluvia-utiles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0; 
-}
-
-/* Tarjeta más compacta */
+/* --- TARJETA PRINCIPAL (Diseño Compacto) --- */
 .tarjeta {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    text-align: center;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     width: 85%;
-    max-width: 350px;
-    z-index: 1;
-    margin: 10px;
-}
-
-/* Flores reducidas y centradas */
-.decoracion-flores { 
-    font-size: 2rem; 
-    margin-bottom: 5px; 
+    max-width: 300px;
+    text-align: center;
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    animation: aparecer 1s ease-out;
 }
 
-h1 { color: #4a148c; font-size: 1.2rem; margin: 5px 0; }
-.nombre { color: #8bc34a; font-size: 2rem; font-weight: bold; margin: 5px 0; }
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
 
-/* Caja de frases más delgada */
+/* --- ELEMENTOS INTERNOS --- */
+.decoracion-flores { 
+    font-size: 2.5rem; 
+    margin-bottom: 5px; 
+}
+
+.mensaje-bienvenida {
+    font-size: 0.85rem;
+    color: #4a148c;
+    font-weight: 600;
+    margin-bottom: 5px;
+    animation: desvanecer 4s forwards;
+}
+
+@keyframes desvanecer {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+h1 { color: #4a148c; font-size: 1.1rem; margin: 5px 0; }
+.nombre { color: #8bc34a; font-size: 1.8rem; font-weight: bold; margin: 5px 0; }
+
 #caja-frases {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.5);
     padding: 10px;
     border-radius: 15px;
     margin: 10px 0;
-    min-height: 50px;
+    min-height: 60px;
     border: 2px solid #0288d1;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.selector-animo { display: flex; flex-direction: column; gap: 8px; }
+.selector-animo { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    width: 100%;
+}
 
 button {
-    padding: 10px; border-radius: 30px; border: none;
-    font-weight: bold; cursor: pointer; color: white;
-    font-size: 0.9rem;
+    width: 100%;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    animation: pulso 3s infinite ease-in-out;
 }
+
+@keyframes pulso {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
 .btn-insp { background: #6a1b9a; }
 .btn-desc { background: #0288d1; }
 .btn-reset { background: #c6ff00; color: #333; }
 
-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-
-/* Lluvia de útiles */
+/* --- LLUVIA DE ÚTILES --- */
 .lluvia-utiles {
     position: fixed;
     top: -50px;
+    left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -91,101 +117,4 @@ button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.
 
 @keyframes caer {
     to { transform: translateY(100vh) rotate(360deg); }
-}
-.decoracion-flores {
-    font-size: 6rem; /* CambiaR este valor para que las flores sean más grandes */
-    margin-bottom: 80px;
-}
-
-/* --- DISEÑO RESPONSIVO AUTOMÁTICO --- */
-
-/* 1. Para móviles pequeños y tablets */
-@media (max-width: 600px) {
-    .tarjeta {
-        width: 90%;          /* Ocupa casi todo el ancho */
-        padding: 20px;       /* Menos espacio interno para aprovechar la pantalla */
-        border-radius: 15px;
-    }
-
-    h1 { font-size: 1.5rem; } /* Título más pequeño en móviles */
-
-    .selector-animo {
-        flex-direction: column; /* Botones uno debajo de otro */
-        gap: 10px;
-    }
-
-    button {
-        width: 100%;         /* Botones ocupan todo el ancho */
-        padding: 15px;       /* Botones más altos para tocarlos fácil con el dedo */
-    }
-}
-
-/* 2. Para pantallas muy grandes (PC) */
-@media (min-width: 1200px) {
-    .tarjeta {
-        max-width: 600px;    /* Un poco más de espacio en monitores grandes */
-    }
-}
-
-
-/* Tarjeta con efecto de "flotación" */
-.tarjeta {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 30px; /* Un poco más de aire */
-    border-radius: 30px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    width: 80%;
-    max-width: 320px; /* Mantenemos el tamaño compacto */
-    animation: aparecer 1s ease-out; /* Animación al cargar */
-}
-
-@keyframes aparecer {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-/* Efecto de pulso suave en los botones */
-button {
-    transition: all 0.3s ease;
-    animation: pulso 3s infinite ease-in-out;
-}
-
-@keyframes pulso {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-    100% { transform: scale(1); }
-}
-.mensaje-bienvenida {
-    font-size: 0.8rem;
-    color: #555;
-    font-style: italic;
-    margin-bottom: 10px;
-    animation: desvanecer 4s forwards;
-}
-@keyframes desvanecer {
-    0% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; display: none; }
-}
-
-/* Reducir el tamaño de las flores */
-.decoracion-flores { 
-    font-size: 3rem; /* Ajustado para que no ocupe tanto espacio vertical */
-    margin-bottom: 10px; 
-}
-
-/* Ajustar tarjeta para que sea más compacta */
-.tarjeta {
-    padding: 15px; /* Reducimos un poco el interior */
-    max-width: 300px; /* Aseguramos que no crezca demasiado */
-}
-
-/* Mejorar el mensaje de bienvenida para que se vea claro */
-.mensaje-bienvenida {
-    font-size: 0.9rem;
-    color: #4a148c; /* Color oscuro para que resalte sobre el fondo */
-    margin-bottom: 5px;
-    font-weight: 600;
 }

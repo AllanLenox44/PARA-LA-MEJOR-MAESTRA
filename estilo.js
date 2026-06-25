@@ -44,9 +44,22 @@ const frases = {
         "MAESTRA, TU DESCANSO ES EL EJEMPLO MÁS GRANDE QUE PUEDES DAR SOBRE EL AUTOCUIDADO."
     ]
 };
+// Función para vibración táctil
+function vibrar() {
+    if ("vibrate" in navigator) {
+        navigator.vibrate(50);
+    }
+}
+
 function mostrarFrase(tipo) {
-    // Confeti más festivo
-    confetti({ particleCount: 200, spread: 100, origin: { y: 0.7 }, colors: ['#6a1b9a', '#0288d1', '#c6ff00'] });
+    vibrar();
+    // Confeti festivo con colores suaves
+    confetti({ 
+        particleCount: 150, 
+        spread: 100, 
+        origin: { y: 0.6 }, 
+        colors: ['#FF69B4', '#FFD700', '#87CEEB'] 
+    });
     
     const cajaFrases = document.getElementById('frase');
     const lista = frases[tipo];
@@ -60,6 +73,7 @@ function mostrarFrase(tipo) {
 }
 
 function reiniciarMensaje() {
+    vibrar();
     const cajaFrases = document.getElementById('frase');
     cajaFrases.style.opacity = 0;
     setTimeout(() => {
@@ -77,49 +91,20 @@ function crearLluvia() {
         util.classList.add('util');
         util.textContent = utiles[Math.floor(Math.random() * utiles.length)];
         
-        // Ajuste de tamaño para que se vean bien en móvil
-        util.style.fontSize = (Math.random() * 30 + 20) + 'px';
+        util.style.fontSize = (Math.random() * 20 + 15) + 'px'; // Ligeramente más pequeños
         util.style.position = 'absolute';
         util.style.top = '-50px';
         util.style.left = Math.random() * 100 + 'vw';
         util.style.animation = `caer ${Math.random() * 3 + 4}s linear`;
         
         contenedor.appendChild(util);
-        
-        // Eliminar después de que termine la animación
         setTimeout(() => util.remove(), 7000);
-    }, 800);
+    }, 1200); // Un poco más lento para no saturar
 }
 
-// Añadimos el keyframe dinámicamente si no está en el CSS
-const style = document.createElement('style');
-style.innerHTML = `@keyframes caer { to { transform: translateY(100vh) rotate(360deg); } }`;
-document.head.appendChild(style);
-
-crearLluvia();
-
+// Configuración inicial
 crearLluvia();
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
-}
-
-
-// Añadir vibración si el navegador lo permite
-function vibrar() {
-    if ("vibrate" in navigator) {
-        navigator.vibrate(50); // Vibración corta al tocar
-    }
-}
-
-// Modificar mostrarFrase para incluir la vibración
-function mostrarFrase(tipo) {
-    vibrar(); // Feedback táctil
-    confetti({ 
-        particleCount: 100, 
-        spread: 70, 
-        origin: { y: 0.6 },
-        colors: ['#FF69B4', '#FFD700', '#87CEEB'] // Colores más suaves
-    });
-    // ... resto de tu código existente ...
 }
