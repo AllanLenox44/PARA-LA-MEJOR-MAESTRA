@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para la Maestra 999999</title>
+    <link rel="stylesheet" href="detalles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <div class="lluvia-utiles" id="lluvia"></div>
+
+    <div class="tarjeta">
+        <div class="decoracion-flores">🌸 🌻 🌼</div>
+        <h1>¡Feliz Día de la Maestra!</h1>
+        <p class="nombre">HOLA</p>
+        
+        <div id="caja-frases">
+            <p id="frase">¿CÓMO TE SIENTES HOY MISS?</p>
+        </div>
+
+        <div class="selector-animo">
+            <button onclick="mostrarFrase('inspiracion')">✨ NECESITO INSPIRACIÓN ✨</button>
+            <button onclick="mostrarFrase('descanso')">☕ NECESITO UN DESCANSO ☕</button>
+            <button onclick="reiniciarMensaje()" style="background: #757575;">🔄 Reiniciar</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="estilo.js"></script>
+</body>
+</html>
