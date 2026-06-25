@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para la Maestra</title>
+    <title>Para mi Maestra</title>
     <link rel="stylesheet" href="detalles.css">
     <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#6a1b9a">
 </head>
 <body>
-    <div class="mensaje-bienvenida" id="bienvenida">¡Hola, un día especial para ti!</div>
-    <div class="lluvia-utiles" id="lluvia"></div>
-    <div class="tarjeta">
-    <div class="decoracion-flores">🌸 🌻 🌼</div>
-    <div class="mensaje-bienvenida">¡Hola, un día especial para ti!</div> <!-- Ahora sí se verá -->
-    <h1>¡Feliz Día, Maestra!</h1>
-    <p class="nombre">MISS</p>
-</div>
+    <div id="lluvia" class="lluvia-utiles"></div>
+    <main class="tarjeta">
+        <div class="decoracion-flores">🌸 🌻 🌼</div>
+        <h1 id="saludo">¡Hola, Maestra Yeimy!</h1>
+        <p class="nombre">¡RECUERDA, ERES LA MEJOR!</p>
         <div id="caja-frases">
-            <p id="frase">¿CÓMO TE SIENTES HOY MISS?</p>
+            <p id="frase">¿CÓMO TE SIENTES HOY MISS YEIMY?</p>
         </div>
         <div class="selector-animo">
-    <button onclick="mostrarFrase('inspiracion')" class="btn-insp">✨ Inspiración</button>
-    <button onclick="mostrarFrase('descanso')" class="btn-desc">☕ Descanso</button>
-    <button onclick="mostrarFrase('motivacion')" class="btn-motivacion">🚀 Motivación</button>
-    <button onclick="reiniciarMensaje()" class="btn-reset">🔄 Reiniciar</button>
-</div>
-    </div>
+            <button onclick="mostrarFrase('inspiracion')" class="btn-insp">✨ Necesito Inspiración ✨</button>
+            <button onclick="mostrarFrase('descanso')" class="btn-desc">☕ Necesito un Descanso ☕</button>
+           <button onclick="mostrarFrase('motivacion')" class="btn-motivacion" style="background: #ff9800; color: white;">🚀 Necesito Motivación 🚀</button>
+            <button onclick="reiniciarMensaje()" class="btn-reset">🔄 Reiniciar 🔄</button>
+        </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="estilo.js"></script>
 </body>

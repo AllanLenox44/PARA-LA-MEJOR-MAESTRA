@@ -1,13 +1,13 @@
 {
-  "name": "Para mi Maestra",
-  "short_name": "Maestra",
+  "name": "For the best teacher",
+  "short_name": "MISS YEIMY",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#6a1b9a",
   "theme_color": "#6a1b9a",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2921/2921226.png",
+      "src": "icono.png",
       "sizes": "192x192",
       "type": "image/png"
     }

@@ -1,81 +1,263 @@
-/* --- BASE Y FONDO --- */
 body {
-    background: linear-gradient(135deg, #4a148c, #0288d1);
+    /* Gradiente estático (el mismo de la imagen) */
+    background: linear-gradient(135deg, #6a1b9a, #0288d1, #c6ff00);
+    
+    /* Fijamos el fondo para que no se mueva */
+    background-attachment: fixed;
+    background-size: cover;
+    
     min-height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
-    padding: 10px;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden; 
 }
 
-/* --- TARJETA COMPACTA Y VERTICAL --- */
 .tarjeta {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 25px;
-    border-radius: 35px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    
-    /* Configuración para forzar verticalidad */
-    width: 90%;
-    max-width: 320px;
+    border-radius: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    border: 1px solid rgba(255,255,255,0.3);
-    animation: slideUp 0.8s ease-out;
+    max-width: 350px;
 }
 
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- ELEMENTOS --- */
-.decoracion-flores { font-size: 2.5rem; margin-bottom: 5px; }
-h1 { color: #311b92; font-size: 1.2rem; margin: 5px 0; }
-.nombre { color: #689f38; font-size: 2rem; font-weight: 800; margin: 5px 0; }
+h1 { color: #ffffff; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+.nombre { color: #c6ff00; font-size: 1rem; font-weight: bold; }
 
 #caja-frases {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 15px;
-    border-radius: 15px;
-    border: 2px solid #0288d1;
-    font-size: 0.9rem;
-    width: 100%;
-    box-sizing: border-box;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    color: #6a1b9a;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px 0;
+    min-height: 80px;
 }
 
-.selector-animo { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 10px; 
-    width: 100%;
-}
+.selector-animo { display: flex; flex-direction: column; gap: 12px; }
 
 button {
-    width: 100%;
-    padding: 12px;
-    border-radius: 20px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    color: white;
-    transition: transform 0.2s;
+    padding: 15px; border-radius: 50px; border: none;
+    font-weight: bold; cursor: pointer; transition: 0.3s;
 }
 
-button:active { transform: scale(0.95); }
+.btn-insp { background: #6a1b9a; color: white; }
+.btn-desc { background: #0288d1; color: white; }
+.btn-reset { background: #c6ff00; color: #333; }
 
-.btn-insp { background: linear-gradient(45deg, #7b1fa2, #ab47bc); }
-.btn-desc { background: linear-gradient(45deg, #0288d1, #29b6f6); }
-.btn-motivacion { background: linear-gradient(45deg, #fbc02d, #ffd54f); color: #333; }
-.btn-reset { background: #eee; color: #555; }
+button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+/* Lluvia de útiles */
+.lluvia-utiles {
+    position: fixed;
+    top: -100px;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.util {
+    position: absolute;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    to { transform: translateY(100vh) rotate(360deg); }
+}
+.decoracion-flores {
+    font-size: 4rem; /* CambiaR este valor para que las flores sean más grandes */
+    margin-bottom: 20px;
+}
+
+/* --- DISEÑO RESPONSIVO AUTOMÁTICO --- */
+
+/* 1. Para móviles pequeños y tablets */
+@media (max-width: 600px) {
+    .tarjeta {
+        width: 85%;          /* Cambiado de 90% a 85% para dejar un pequeño margen */
+        max-width: 400px;    /* Esto evita que se vea gigante en tablets pequeñas */
+        padding: 20px;       
+        border-radius: 20px;
+        margin: 0 auto;      /* Esto centra la tarjeta automáticamente */
+    }
+    
+    /* ... resto de tu código ... */
+}
+
+    h1 { font-size: 1.5rem; } /* Título más pequeño en móviles */
+
+    .selector-animo {
+        flex-direction: column; /* Botones uno debajo de otro */
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;         /* Botones ocupan todo el ancho */
+        padding: 15px;       /* Botones más altos para tocarlos fácil con el dedo */
+    }
+
+
+/* 2. Para pantallas muy grandes (PC) */
+@media (min-width: 1200px) {
+    .tarjeta {
+        max-width: 600px;    /* Un poco más de espacio en monitores grandes */
+    }
+}
+
+/* --- ADICIONES PARA ANIMACIONES Y SOMBRAS --- */
+
+/* Efecto flotante para la tarjeta */
+.tarjeta {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    animation: flotar 4s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Sombras más intensas y bordes brillantes */
+.tarjeta:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Efecto de pulso suave en el título */
+h1 {
+    animation: latido 2s infinite;
+}
+
+@keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Mejora botones */
+button {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Clase para animar la entrada de frases */
+#frase {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(1);
+}
+
+.animar-cambio {
+    transform: scale(0.95);
+    opacity: 0;
+}
+
+
+/* --- EFECTOS DE INTERACCIÓN Y BOTONES --- */
+
+/* 1. Base común para todos los botones */
+button {
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* 2. Efecto universal al presionar cualquier botón */
+button:active {
+    transform: scale(0.95);
+    filter: brightness(0.85);
+}
+
+/* 3. Efectos específicos por tipo de botón */
+.btn-insp:active {
+    box-shadow: 0 0 15px rgba(225, 190, 231, 0.5);
+}
+
+.btn-desc:active {
+    transform: scale(0.95) translateY(2px);
+}
+
+.btn-reset:active {
+    animation: rotar 0.5s linear;
+}
+
+/* 4. Animación para el botón de reinicio */
+@keyframes rotar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+/* Animación de las flores (flotación suave) */
+.flor {
+    display: inline-block;
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Efecto de "explotar" para los objetos de lluvia */
+.explotar {
+    animation: explosion 0.5s forwards;
+}
+
+@keyframes explosion {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+
+
+
+
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism mejorado */
+.tarjeta-principal {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
